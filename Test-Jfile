@@ -32,9 +32,9 @@ pipeline {
                 //println map
 				//println inpJson.test.appName
 				//println inpJson.test[1].appName
-				echo  "appName = ${map.test.appName}"
-				echo  "appID = ${map.test.appID}"
-                //echo  "bar = ${map.bar}"
+				echo  "appName = ${map.App1.appName}"
+				echo  "appID = ${map.App1.appID}"
+                echo  "flag = ${map.Flag}"
 				}
             }
         }		
