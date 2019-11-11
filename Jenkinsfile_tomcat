@@ -46,9 +46,9 @@ pipeline {
         }
         stage('Build Environment & Deploy') {
             steps {
-            sh 'echo "Build Environment & Deploy" '
+	    	sh './buildTomcatServer.sh run '              
             }
-        }		
+        }			
 		
     } 
 }
