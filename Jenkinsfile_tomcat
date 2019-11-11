@@ -50,7 +50,7 @@ pipeline {
 	        sh 'cd ..;chmod -R 775 ${JOB_NAME}'
 	    	//sh './buildTomcatServer.sh run '  
 		sh 'cd ..;scp -pr ${JOB_NAME} sasikumar24@sasikumar24-ubuntu:/home/sasikumar24/'				
-		sh 'ssh -t sasikumar24@sasikumar24-ubuntu "cd /home/sasikumar24/${JOB_NAME} ; ./buildTomcatServer.sh run ; bash"
+		sh 'ssh -t sasikumar24@sasikumar24-ubuntu "cd /home/sasikumar24/${JOB_NAME} ; ./buildTomcatServer.sh run ; bash" '
             }
         }			
 		
