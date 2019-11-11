@@ -46,6 +46,7 @@ pipeline {
         }
         stage('Build Environment & Deploy') {
             steps {
+	        sh 'cd ..;chmod -R 775 ${JOB_NAME}'
 	    	sh './buildTomcatServer.sh run '              
             }
         }			
