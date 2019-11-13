@@ -47,7 +47,7 @@ pipeline {
         stage('Build Environment & Deploy') {
             steps {
 	        sh 'echo "sas ==================>>>"; pwd'
-	        sh 'cd ..;chmod -R 775 ${JOB_NAME}'
+	        sh 'cd ..;chmod -R 775 .'
 	    	//sh './buildTomcatServer.sh run '  
 		sh 'cd ..;scp -pr ${JOB_NAME} sasikumar24@192.168.2.36:/home/sasikumar24/workspace'				
 		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/${JOB_NAME} ; ./buildTomcatServer.sh run ; bash" '
