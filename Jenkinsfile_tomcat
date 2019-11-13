@@ -47,11 +47,11 @@ pipeline {
         stage('Build Environment & Deploy') {
             steps {
 	        sh 'echo "sas ==================>>>"; pwd'
-		sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
-	        sh 'cd ..;chmod -R 775 ${jn}'
+		//sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
+	        sh 'cd ..;chmod -R 775 $(echo ${JOB_NAME} | awk -F/ '{print $2}')'
 	    	//sh './buildTomcatServer.sh run '  
-		sh 'cd ..;scp -pr ${jn} sasikumar24@192.168.2.36:/home/sasikumar24/workspace'				
-		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/${jn} ; ./buildTomcatServer.sh run ; bash" '
+		sh 'cd ..;scp -pr $(echo ${JOB_NAME} | awk -F/ '{print $2}') sasikumar24@192.168.2.36:/home/sasikumar24/workspace'				
+		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/$(echo ${JOB_NAME} | awk -F/ '{print $2}') ; ./buildTomcatServer.sh run ; bash" '
             }
         }			
 		
