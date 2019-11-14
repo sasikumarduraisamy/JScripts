@@ -47,8 +47,8 @@ pipeline {
         stage('Build Environment & Deploy') {
             steps {
 	        sh 'echo "sas ==================>>>"; pwd'
-		sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
-		sh 'echo $jn'
+		//sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
+		//sh 'echo $jn'
 	        sh 'cd ../..;chmod -R 775 ${JOB_NAME}'
 	    	//sh './buildTomcatServer.sh run '  
 		sh ' pwd '
