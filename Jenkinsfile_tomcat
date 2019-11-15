@@ -39,12 +39,8 @@ pipeline {
             }
         }		
 			
-		stage('Build') {
-		    steps {
-		    sh 'echo "Build" '
-		    }
-        }
-        stage('Build Environment & Deploy') {
+	
+        stage('Build Environment') {
             steps {
 	        sh 'echo "sas ==================>>>"; pwd'
 		//sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
@@ -55,7 +51,8 @@ pipeline {
 		sh 'cd ../..;scp -pr ${JOB_NAME} sasikumar24@192.168.2.36:/home/sasikumar24/workspace/Base-Images/'				
 		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/${JOB_NAME}; ./buildTomcatServer.sh run ; bash" '
             }
-        }			
-		
+        }
+	
+			
     } 
 }
