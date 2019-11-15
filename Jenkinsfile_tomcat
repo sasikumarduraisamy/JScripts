@@ -40,7 +40,7 @@ pipeline {
         }		
 			
 	
-        stage('Build Environment') {
+        stage('Build Image & Environment') {
             steps {
 	        sh 'echo "sas ==================>>>"; pwd'
 		//sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
@@ -52,7 +52,18 @@ pipeline {
 		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/${JOB_NAME}; ./buildTomcatServer.sh run ; bash" '
             }
         }
-	
+	stage('K8S_Deploy') {
+            steps {
+	        //sh 'echo "sas ==================>>>"; pwd'
+		//sh 'jn=$(echo ${JOB_NAME} | awk -F/ '{print $2}')'
+		//sh 'echo $jn'
+	       // sh 'kubectl delete pod tomcat'
+	    	//sh './buildTomcatServer.sh run '  
+		sh ' pwd '
+		sh 'cd ../..;scp -pr ${JOB_NAME} sasikumar24@192.168.2.36:/home/sasikumar24/workspace/Base-Images/'				
+		sh 'ssh -t sasikumar24@192.168.2.36 "kubectl delete pod tomcat; kubectl create -f deployment-tomcat.yaml ; kubectl get pods ; bash" '
+            }
+        }
 			
     } 
 }
