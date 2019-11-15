@@ -61,7 +61,7 @@ pipeline {
 	    	//sh './buildTomcatServer.sh run '  
 		sh ' pwd '
 		sh 'cd ../..;scp -pr ${JOB_NAME} sasikumar24@192.168.2.36:/home/sasikumar24/workspace/Base-Images/'				
-		sh 'ssh -t sasikumar24@192.168.2.36 "kubectl delete pod tomcat; kubectl create -f deployment-tomcat.yaml ; kubectl get pods ; bash" '
+		sh 'ssh -t sasikumar24@192.168.2.36 "cd /home/sasikumar24/workspace/${JOB_NAME}; kubectl delete pod tomcat; kubectl create -f deployment-tomcat.yaml ; kubectl get pods ; bash" '
             }
         }
 			
