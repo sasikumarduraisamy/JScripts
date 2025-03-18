@@ -7,11 +7,11 @@ def parseJsonToMap(String json) {
 pipeline {
     agent any
     //triggers {
-       // cron('H/15 * * * *')
     //}
 	 tools { 
         maven 'M3' 
-        jdk 'java' 
+        jdk 'java'
+     
     }
     stages {
         	stage('\u2776 CheckOut') {
