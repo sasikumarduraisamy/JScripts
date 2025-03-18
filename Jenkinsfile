@@ -14,7 +14,7 @@ pipeline {
         jdk 'java' 
     }
     stages {
-        	stage('\u2776 Checkout') {
+        	stage('\u2776 CheckOut') {
             steps {
 				echo "\u2600 BUILD_URL=${env.BUILD_URL}"
                 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sasikumarduraisamy/myApp.git']]])
